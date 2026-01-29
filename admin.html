@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ColEx - Admin Panel</title>
+    <link rel="icon" type="image/x-icon" href="images/CloEx.png">
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    
+    <!-- QR Scanner Library -->
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+</head>
+<body>
+    <nav class="d-flex justify-content-between px-5 py-3 align-items-center shadow">
+        <div class="navlogo">
+            <img src="images/CloEx.png" alt="company logo" width="60px">
+        </div>
+        <ul>
+            <li style="cursor: pointer;">Home</li>
+            <li style="cursor: pointer;">Categories</li>
+            <li style="cursor: pointer;">Help</li>
+        </ul>
+        <button class="logout-button">Logout</button>
+    </nav>
+
+    <!-- Tab Navigation -->
+    <div class="tabs-container">
+        <div class="tabs-header">
+            <button class="tab-btn active" onclick="switchTab('verification')">
+                🔍 Verify Purchases
+            </button>
+            <button class="tab-btn" onclick="switchTab('products')">
+                📦 Manage Products
+            </button>
+        </div>
+    </div>
+
+    <!-- Verification Tab -->
+    <div id="verification-tab" class="tab-content active">
+        <!-- Purchase Verification Section -->
+        <div class="verification-section">
+            <h3>🔍 Verify Purchase</h3>
+            <div class="verification-container">
+                <div class="verification-method">
+                    <h4>Scan QR Code</h4>
+                    <button onclick="toggleScanner()" class="btn-scan">
+                        <span id="scanner-btn-text">Start Scanner</span>
+                    </button>
+                    <div id="qr-reader" style="display: none;"></div>
+                </div>
+                
+                <div class="verification-divider">OR</div>
+                
+                <div class="verification-method">
+                    <h4>Enter Purchase ID</h4>
+                    <input type="text" id="purchase-id-input" placeholder="PUR-1234567890-1234">
+                    <button onclick="verifyPurchaseId()" class="btn-verify">Verify</button>
+                </div>
+            </div>
+            
+            <!-- Verification Result -->
+            <div id="verification-result" style="display: none;"></div>
+        </div>
+    </div>
+
+    <!-- Products Tab -->
+    <div id="products-tab" class="tab-content">
+        <div class="admin-panel">
+            <h3>Add / Edit Product</h3>
+            <input type="hidden" id="edit-index">
+            <input type="text" id="p-name" placeholder="Product Name" required>
+            <input type="number" id="p-price" placeholder="Price (e.g. 99)" min="0" step="0.01" required>
+            <label for="p-stock" style="display:block; font-size: 12px; margin-bottom: 4px;">Quantity in Stock:</label>
+            <input type="number" id="p-stock" placeholder="0" min="0" required>
+            <input type="url" id="p-img" placeholder="Image URL (optional)">
+            <button id="save-btn" onclick="saveProduct()">Save Product</button>
+        </div>
+
+        <div id="product-container-admin" class="product-grid">
+            <!-- Products will be injected here by JavaScript -->
+        </div>
+    </div>
+
+    <script src="notifications.js"></script>
+    <script src="cardstorage.js" type="module"></script>
+    <script src="admin-verification.js"></script>
+    <script>
+        // Tab switching function
+        function switchTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Remove active from all buttons
+            const btns = document.querySelectorAll('.tab-btn');
+            btns.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected tab
+            if (tabName === 'verification') {
+                document.getElementById('verification-tab').classList.add('active');
+                document.querySelectorAll('.tab-btn')[0].classList.add('active');
+            } else {
+                document.getElementById('products-tab').classList.add('active');
+                document.querySelectorAll('.tab-btn')[1].classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

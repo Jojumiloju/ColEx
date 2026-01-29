@@ -1,0 +1,97 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.register{
+    box-shadow: 0 3px 3px 0 rgba(126, 126, 126, 0.2), 0 3px 3px 0 rgba(126, 126, 126, 0.2);
+    border: 2px solid gray;
+    border-radius: 5px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    width: 350px;
+    padding: 20px;
+}
+#top{
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    align-self: center;
+    justify-self: center;
+    padding-top: 35px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#email{
+    width: 300px;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding: 8px 10px;
+    font-size: 16px;
+}
+#password{
+    width: 300px;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    font-size: 16px;
+    padding: 8px 10px;
+}
+#submit{
+    width: 300px;
+    height: 90px;
+    font-size: 17px;
+    border-radius: 5px;
+    color: white;
+    background-color: black;
+    margin-top: 10px;
+    cursor: pointer;
+    align-self: center;
+    justify-self: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 30px;
+}
+#submit:hover{
+    background-color: gray;
+    border: none;
+}
+span a{
+    display: inline-block;
+    text-decoration: underline;
+    font-size: 17px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    color: black;
+}
+.reg{
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+.regwords{
+    font-size: 17px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+}
+.username{
+    font-size: 17px;
+    margin-bottom: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.password{
+    font-size: 17px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

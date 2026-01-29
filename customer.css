@@ -1,0 +1,560 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.login{
+    background-color: black;
+    color: white;
+    border-radius: 15px;
+    padding: 3px 10px;
+    cursor: pointer;
+}
+.navlogo{
+    cursor: pointer;
+}
+ul{
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    align-items: center;
+}
+.logout-button{
+    width: 80px;
+    height: 30px;
+    font-size: 20px;
+    border-radius: 20px;
+    color: white;
+    background-color: black;
+    cursor: pointer;
+    align-items: center;
+    padding-bottom: 30px;
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card img {
+  max-width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card button {
+  margin-top: 10px;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+.logout-button:hover{
+    background-color: gray;
+    border: none;
+}
+
+/* Fixed Cart Button */
+.cart-trigger {
+  background: white;
+  color: black;
+  width: 70px;
+  height: 30px;
+  padding-left: 13px;
+  border-radius: 20px;
+  border: gray 1px solid;
+  cursor: pointer;
+  align-items: center;
+}
+
+/* Cart Popup Sidebar */
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: -350px; /* Hidden by default */
+  width: 300px;
+  height: 100%;
+  background: white;
+  box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+  transition: 0.3s;
+  z-index: 1001;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-sidebar.active { right: 0; }
+
+.cart-items-list { flex-grow: 1; overflow-y: auto; }
+.footer-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn-clear {
+  width: 100%;
+    background-color: #6c757d; /* Grey color */
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-clear:hover {
+    background-color: #5a6268;
+}
+.btn-pay:hover {
+    background-color: #0056b3;
+}
+.btn-pay {
+  width: 100%;
+  background: #007bff;
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  flex: 2; /* Make pay button larger than clear button */
+}
+/* Layout for each row in the popup */
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-item-info p {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.cart-item-price {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cart-item-price span {
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+/* Small 'X' button to remove items */
+.btn-remove-small {
+  background: #ffeded;
+  color: #d9534f;
+  border: 1px solid #d9534f;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 2px 6px;
+  font-weight: bold;
+}
+
+.btn-remove-small:hover {
+  background: #d9534f;
+  color: white;
+}
+.account{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+.stock-label {
+  font-size: 0.9rem;
+  margin: 10px 0;
+  font-weight: bold;
+  color: #28a745; /* Green for in-stock */
+}
+
+.out-of-stock {
+  color: #dc3545 !important; /* Red for sold out */
+}
+
+/* Style for the 'Sold Out' button state */
+button:disabled {
+  background-color: #ccc !important;
+  cursor: not-allowed;
+  transform: none !important;
+}
+.qty-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0; /* Remove gap to make it look joined */
+  margin: 15px 0;
+}
+
+.qty-selector button {
+  background: #e9ecef;
+  border: 1px solid #ced4da;
+  padding: 5px 12px 5px 12px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  height: 34px;
+  margin: 0;
+}
+
+.qty-selector button:first-child {
+  border-radius: 4px 0 0 4px;
+}
+
+.qty-selector button:last-child {
+  border-radius: 0 4px 4px 0;
+}
+
+.qty-selector input {
+  width: 50px;
+  height: 34px;
+  text-align: center;
+  border-top: 1px solid #ced4da;
+  border-bottom: 1px solid #ced4da;
+  border-left: none;
+  border-right: none;
+  font-weight: bold;
+}
+
+/* QR Code Modal Styles */
+.qr-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.qr-modal.active {
+  opacity: 1;
+}
+
+.qr-modal-content {
+  background: white;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.qr-header {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  padding: 25px;
+  border-radius: 16px 16px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.qr-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.close-modal {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 32px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.close-modal:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.qr-body {
+  padding: 30px;
+}
+
+.purchase-info {
+  text-align: center;
+  margin-bottom: 25px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+}
+
+.purchase-info p {
+  margin: 8px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.purchase-id {
+  font-size: 18px;
+  font-weight: 700;
+  color: #007bff;
+  background: white;
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px dashed #007bff;
+  font-family: 'Courier New', monospace;
+  word-break: break-all;
+}
+
+.items-list {
+  font-size: 13px;
+  color: #444;
+  margin: 15px 0;
+  line-height: 1.6;
+}
+
+.total-amount {
+  font-size: 20px;
+  font-weight: 700;
+  color: #28a745;
+}
+
+.qr-code-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 25px 0;
+  padding: 25px;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+}
+
+#qrcode {
+  margin-bottom: 15px;
+}
+
+#qrcode img {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.qr-instruction {
+  font-size: 13px;
+  color: #666;
+  text-align: center;
+  margin: 0;
+  font-style: italic;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.btn-download,
+.btn-done {
+  flex: 1;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 15px;
+}
+
+.btn-download {
+  background: #007bff;
+  color: white;
+}
+
+.btn-download:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.btn-done {
+  background: #28a745;
+  color: white;
+}
+
+.btn-done:hover {
+  background: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+@media screen and (max-width:480px) {
+    ul{
+        display: none;
+    }
+    
+    .qr-modal-content {
+      width: 95%;
+      margin: 10px;
+    }
+    
+    .qr-header {
+      padding: 20px;
+    }
+    
+    .qr-header h2 {
+      font-size: 20px;
+    }
+    
+    .qr-body {
+      padding: 20px;
+    }
+}
+
+/* ========== UI/UX Improvements ========== */
+
+/* Improved Card Styling */
+.card {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+}
+
+.card h4 {
+  margin: 15px 0 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.card p {
+  margin: 8px 0;
+  color: #666;
+}
+
+/* Improved Cart Sidebar */
+.cart-sidebar {
+  background: #fafafa;
+}
+
+.cart-header {
+  background: black;
+  color: white;
+  padding: 20px;
+  margin: -20px -20px 20px -20px;
+  border-radius: 0;
+}
+
+.cart-header h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.cart-header .close-btn {
+  background: rgba(255,255,255,0.1);
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.cart-header .close-btn:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.cart-footer {
+  background: white;
+  padding: 20px;
+  margin: 20px -20px -20px -20px;
+  border-top: 2px solid #e0e0e0;
+}
+
+.cart-footer p {
+  margin: 0 0 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Improved Navigation */
+nav {
+  background: white !important;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Better Product Grid Spacing */
+.product-grid {
+  padding: 30px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Quantity Selector Enhancement */
+.qty-selector button {
+  background: black;
+  color: white;
+  border: none;
+  transition: background 0.3s;
+}
+
+.qty-selector button:hover {
+  background: #555;
+}
+
+.qty-selector input {
+  background: #fafafa;
+  font-size: 16px;
+}
+.btn-buy {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+}
+
+.btn-buy:hover {
+  background-color: #333;
+}
